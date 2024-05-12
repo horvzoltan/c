@@ -22,7 +22,7 @@ void enableRawMode()
 
 {
     if (tcgetattr(STDIN_FILENO, &orig_termios) == -1)
-        die('tcgetattr');
+        die("tcgetattr");
 
     atexit(disableRawMode);
     struct termios raw = orig_termios;
@@ -33,7 +33,7 @@ void enableRawMode()
     raw.c_cc[VMIN] = 0;
     raw.c_cc[VTIME] = 1;
     if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw) == -1)
-        die('tcsetattr');
+        die("tcsetattr");
 }
 int main()
 {
