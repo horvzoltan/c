@@ -1,9 +1,13 @@
+/*** includes ***/
 #include <termios.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <errno.h>
+
+/*** includes ***/
+#define CTRL_KEY(k) ((k) & 0x1f)
 
 struct termios orig_termios;
 
@@ -51,7 +55,7 @@ int main()
         {
             printf("%d ('%c')\r\n", c, c);
         }
-        if (c == 'q')
+        if (c == CTRL_KEY('q'))
             break;
     }
 
