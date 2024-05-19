@@ -1,6 +1,8 @@
-*
 !*.c
 !*.h
 !MakeFile
 !.gitignore
 !README.md
+*
+
+
