@@ -1,16 +1,26 @@
 #include <stdio.h>
-
-// Define the CTRL_KEY macro
-#define CTRL_KEY(k) ((k) & 0x1f)
+#include <stdlib.h>
+#include <time.h>
 
 int main()
 {
-    char input_char = 'A';                    // Example input character 'A'
-    char control_char = CTRL_KEY(input_char); // Apply CTRL_KEY macro
+    srand(time(0));
+    int result = 0;
+    for (size_t i = 0; i < 10000; i++)
+    {
+        int tripple = 0;
+        for (size_t y = 0; y < 3; y++)
+        {
+            int random_number = rand() % 2;
+            tripple += random_number;
+        }
+        if (tripple == 0 || tripple == 3)
+        {
+            result++;
+        }
+        tripple = 0;
+    }
 
-    // Print the original and control characters
-    printf("Original character: %c (ASCII: %d)\n", input_char, input_char);
-    printf("Control character: %c (ASCII: %d)\n", control_char, control_char);
-
+    printf("percent: %.2f%%", (float)result / 100);
     return 0;
 }
