@@ -59,7 +59,14 @@ void update()
 
 void render()
 {
-    // TODO
+    // Set the draw color to white
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+
+    // Clear the screen
+    SDL_RenderClear(renderer);
+
+    // Present the renderer
+    SDL_RenderPresent(renderer);
 }
 
 void destroy_window()
