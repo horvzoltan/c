@@ -6,6 +6,12 @@ int game_is_running = FALSE;
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 
+struct ball
+{
+    int x, y;
+    int w, h;
+} ball;
+
 int initialize_window(void)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -49,21 +55,29 @@ void process_input()
 
 void setup()
 {
-    // TODO
+    ball.x = 20;
+    ball.y = 20;
+    ball.w = 15;
+    ball.h = 15;
 }
 
 void update()
 {
-    // TODO
+    ball.x += 1;
+    ball.y += 1;
 }
 
 void render()
 {
     // Set the draw color to white
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
     // Clear the screen
     SDL_RenderClear(renderer);
+
+    SDL_Rect ball_rect = {ball.x, ball.y, ball.w, ball.h};
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderFillRect(renderer, &ball_rect);
 
     // Present the renderer
     SDL_RenderPresent(renderer);
